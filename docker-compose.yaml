@@ -1,0 +1,25 @@
+version: '3.3'
+
+services:
+
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'dbscan'
+      MYSQL_USER: 'nikmor'
+      MYSQL_PASSWORD: 'q1w2e3!'
+      MYSQL_ROOT_PASSWORD: 'q1w2e3!'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - /var/mysql_tz:/var/lib/mysql
+
+  python:
+    build: .
+    volumes:
+      - /var/docker_tz:/var/docker_tz
+      - ./scan.py:/scan.py
+    command: "python3 /scan.py"
