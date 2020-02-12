@@ -70,7 +70,7 @@ def main():
                 db.commit()
         cursor.close()
         db.close()
-        time.sleep(60)
+        time.sleep(3540)
 
 if __name__ == '__main__':
     main()
